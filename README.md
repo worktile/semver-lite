@@ -1,4 +1,6 @@
-# semver-lite The lightweight semantic versioner compare library
+# semver-lite 
+
+The lightweight semantic versioner compare library
 
 About Semantic Versioning 2.0.0 http://semver.org
 
@@ -15,17 +17,20 @@ Based on the [node-semver](https://github.com/npm/node-semver) project
 
 ## Usage
 
-As a node module:
+Integral semver version as `1.0.0-beta+20191012` `{main-version}-{pre-release}+{build-version}`
 
+As a node module:
+ 
 ```
 const semver = require('semver-lite')
 
-semver.valid('1.2.3') // '1.2.3'
-semver.valid('a.b.c') // null
-semver.clean(' v1.2.3   ') // '1.2.3'
-semver.satisfies('1.2.3', '1.x || >=2.5.0 || 5.0.0 - 7.2.3') // true
-semver.gt('1.2.3', '9.8.7') // false
-semver.lt('1.2.3', '9.8.7') // true
+semver.compare('2.0.1', '1.0.10'); // 1
+semver.compare('2.0.1', '2.0.1'); // 0
+semver.compare('2.0.1', '3.0.10'); // -1
+semver.gt('2.0.1', '1.0.10') // true
+semver.gt('2.0.1', '3.0.10') // false
+semver.lt('2.0.1', '1.0.10') // false
+semver.lt('2.0.1', '3.0.10') // true
 ```
 
 As a bower module:
