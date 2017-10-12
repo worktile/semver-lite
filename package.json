@@ -1,0 +1,27 @@
+{
+  "name": "semver-lite",
+  "version": "1.0.0",
+  "description": "semver compare library",
+  "main": "src/se\t",
+  "scripts": {
+    "lint": "eslint src/**/**/*.js",
+    "test": "ava test --verbose",
+    "cover": "nyc npm test --all",
+    "travis:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worktile/semver-lite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/worktile/semver-lite/issues"
+  },
+  "homepage": "https://github.com/worktile/semver-lite#readme",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "eslint": "^4.8.0",
+    "nyc": "^11.2.1"
+  }
+}
