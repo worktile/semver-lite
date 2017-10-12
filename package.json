@@ -7,7 +7,6 @@
     "lint": "eslint src/**/**/*.js",
     "test": "ava test --verbose",
     "cover": "nyc npm test --all",
-    "build-test": "rollup  src/index.js --o dist/semver.js --f iife",
     "build": "webpack",
     "travis:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
