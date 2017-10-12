@@ -1,6 +1,6 @@
 # semver-lite 
 
-The lightweight semantic versioner compare library
+**The lightweight semantic versioner compare library**
 
 About Semantic Versioning 2.0.0 http://semver.org
 
