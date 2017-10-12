@@ -13,6 +13,11 @@ const semver = {
     lt(a, b, needCompareBuildVersion) {
         const result = this.compare(a, b, needCompareBuildVersion);
         return result === -1;
+    },
+    // 主版本转成数字类型方便比较
+    mainVersionToNumeric(version, digit = 4) {
+        const semverVersion = new SemverVersion(version);
+        return semverVersion.mainVersionToNumeric(digit);
     }
 };
 

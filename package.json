@@ -2,11 +2,13 @@
   "name": "semver-lite",
   "version": "1.0.0",
   "description": "semver compare library",
-  "main": "src/se\t",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/**/**/*.js",
     "test": "ava test --verbose",
     "cover": "nyc npm test --all",
+    "build-test": "rollup  src/index.js --o dist/semver.js --f iife",
+    "build": "webpack",
     "travis:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -21,7 +23,12 @@
   "homepage": "https://github.com/worktile/semver-lite#readme",
   "devDependencies": {
     "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
     "eslint": "^4.8.0",
-    "nyc": "^11.2.1"
+    "nyc": "^11.2.1",
+    "webpack": "^3.7.1"
   }
 }

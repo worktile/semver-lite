@@ -80,8 +80,24 @@ class SemverVersion {
         return REGEX_NUMERIC.test(numeric);
     }
 
+    _padNumber(num, fill) {
+        const length = ('' + num).length;
+        return (Array(
+            fill > length ? fill - length + 1 || 0 : 0
+        ).join(0) + num);
+    }
+
     validate(version) {
         return false;
+    }
+
+    mainVersionToNumeric(digit) {
+        const numericStr = [
+            this._padNumber(this.major, digit),
+            this._padNumber(this.minor, digit),
+            this._padNumber(this.patch, digit),
+        ].join('');
+        return parseInt(numericStr);
     }
 
     compare(other, needCompareBuildVersion = false) {

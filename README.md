@@ -6,8 +6,8 @@ About Semantic Versioning 2.0.0 http://semver.org
 
 Based on the [node-semver](https://github.com/npm/node-semver) project
 
-1. only support semantic version compare
-2. support front end
+1. only support semantic version compare;
+2. support browsers.
 
 ## Installation
 
@@ -33,9 +33,19 @@ semver.lt('2.0.1', '1.0.10') // false
 semver.lt('2.0.1', '3.0.10') // true
 ```
 
-As a bower module:
+As a browsers:
 
-<script></script>
+`<script src='./dist/semver.js'></script>`
+
+```
+semverLite.compare('2.0.1', '1.0.10'); // 1
+semverLite.compare('2.0.1', '2.0.1'); // 0
+semverLite.compare('2.0.1', '3.0.10'); // -1
+semverLite.gt('2.0.1', '1.0.10') // true
+semverLite.gt('2.0.1', '3.0.10') // false
+semverLite.lt('2.0.1', '1.0.10') // false
+semverLite.lt('2.0.1', '3.0.10') // true
+```
 
 ## Links
 
