@@ -1,20 +1,25 @@
 {
     "author": {
-      "name": "https://github.com/worktile/semver-lite"
+        "name": "https://github.com/worktile/semver-lite"
     },
     "name": "semver-lite",
     "version": "0.0.2",
     "keywords": [
-      "semver",
-      "semver-lite",
-      "compare"
+        "semver",
+        "semver-lite",
+        "compare"
     ],
     "ignore": [
-      "test",
-      "src",
-      "webpack.config.js",
-      ".nycrc",
-      "package.json"
+        "test",
+        "src",
+        "webpack.config.js",
+        ".nycrc",
+        ".eslintrc.json",
+        ".babelrc",
+        "package.json",
+        "package-lock.json"
     ],
-    "main": ["dist/semver.js"]
-  }
+    "main": [
+        "dist/semver.js"
+    ]
+}
