@@ -1,4 +1,5 @@
-# semver-lite 
+# semver-lite [![Build Status](https://api.travis-ci.org/worktile/semver-lite.svg?branch=master)](https://travis-ci.org/worktile/semver-lite)
+
 
 **The lightweight semantic versioner compare library**
 
