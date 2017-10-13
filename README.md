@@ -37,6 +37,8 @@ semver.compare('2.0.0-beta', '2.0.0-1'); // 1
 semver.compare('2.0.0-beta', '2.0.0-rc'); // -1
 semver.compare('2.0.0-beta+20171013', '2.0.0-beta+20171014'); // 0
 semver.compare('2.0.0-beta+20171013', '2.0.0-beta+20171014', true); // -1
+semver.compareMainVersion('2.0.0-beta', '2.0.0-rc'); // 0
+semver.compareMainVersion('2.0.1-beta', '2.0.0-rc'); // 1
 
 semver.gt('2.0.1', '1.0.10'); // true
 semver.gt('2.0.1', '3.0.10'); // false
@@ -46,6 +48,9 @@ semver.lt('2.0.1', '1.0.10'); // false
 semver.lt('2.0.1', '3.0.10'); // true
 semver.lte('2.0.1', '1.0.10'); // false
 semver.lte('2.0.1', '2.0.1'); // true
+
+semver.mainVersionToNumeric('1.10.12, 4); // 100100012 , 1 0010 0012
+semver.mainVersionToNumeric('1.10.12', 6); // 1000010000012 , 1 000010 000012
 
 semver.instance('v1.2.0-2+20171013').mainVersion; // '1.2.0'
 semver.instance('v1.2.0-2+20171013').version; // '1.2.0-2+20171013'

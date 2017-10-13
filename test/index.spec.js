@@ -93,8 +93,13 @@ test('3.0.0 lt 2.0.0 return false', async t => {
     t.is(semver.lte('3.0.0', '2.0.0'), false);
 });
 
+// mainVersionToNumeric
 test('version 1.10.12-beta+20130222 main version to numeric is 100100012', async t => {
     t.is(semver.mainVersionToNumeric('1.10.12'), 100100012);
+});
+
+test('version 1.10.12-beta+20130222 main version to numeric is 100100012', async t => {
+    t.is(semver.mainVersionToNumeric('1.10.12', 6), 1000010000012);
 });
 
 test('version 1.10111.12 main version to numeric is 1101110012', async t => {
