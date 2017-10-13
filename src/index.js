@@ -22,9 +22,17 @@ const semver = {
         const result = this.compare(a, b, needCompareBuildVersion);
         return result === 1;
     },
+    gte(a, b, needCompareBuildVersion) {
+        const result = this.compare(a, b, needCompareBuildVersion);
+        return result === 1 || result === 0;
+    },
     lt(a, b, needCompareBuildVersion) {
         const result = this.compare(a, b, needCompareBuildVersion);
         return result === -1;
+    },
+    lte(a, b, needCompareBuildVersion) {
+        const result = this.compare(a, b, needCompareBuildVersion);
+        return result === -1 || result === 0;
     },
     // 主版本转成数字类型方便比较
     mainVersionToNumeric(version, digit = 4) {

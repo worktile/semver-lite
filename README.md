@@ -40,8 +40,12 @@ semver.compare('2.0.0-beta+20171013', '2.0.0-beta+20171014', true); // -1
 
 semver.gt('2.0.1', '1.0.10'); // true
 semver.gt('2.0.1', '3.0.10'); // false
+semver.gte('2.0.1', '1.0.10'); // true
+semver.gte('2.0.1', '2.0.1'); // true
 semver.lt('2.0.1', '1.0.10'); // false
 semver.lt('2.0.1', '3.0.10'); // true
+semver.lte('2.0.1', '1.0.10'); // false
+semver.lte('2.0.1', '2.0.1'); // true
 
 semver.instance('v1.2.0-2+20171013').mainVersion; // '1.2.0'
 semver.instance('v1.2.0-2+20171013').version; // '1.2.0-2+20171013'
@@ -60,6 +64,14 @@ semverLite.gt('2.0.1', '1.0.10') // true
 semverLite.gt('2.0.1', '3.0.10') // false
 semverLite.lt('2.0.1', '1.0.10') // false
 semverLite.lt('2.0.1', '3.0.10') // true
+```
+## Notes
+
+compare,gt,gte,lt,lte has thirdly third optional parameter `needCompareBuildVersion` what mark wheather compare build version, default is `false`.
+
+```
+semver.compare('2.0.0+20171013', '2.0.0+20171014'); // 0  default false don't compare build version `20171014`
+semver.compare('2.0.0+20171013', '2.0.0+20171014', true); // -1 compare build version `20171014`
 ```
 
 ## Links

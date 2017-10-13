@@ -1,6 +1,5 @@
 const test = require('ava');
 const semver = require('../src/index');
-// const old = require('../src/old');
 
 test('compare 2.0.0 > 1.0.0 return 1', async t => {
     t.is(semver.compare('2.0.0', '1.0.0'), 1);
@@ -42,8 +41,8 @@ test('compare 1.0.0+1 < 1.0.0+2 with build version return -1', async t => {
     t.is(semver.compare('1.0.0+1', '1.0.0+2', true), -1);
 });
 
-
-test('2.0.0 gt 1.0.0 return true', async t => {
+ // gt
+ test('2.0.0 gt 1.0.0 return true', async t => {
     t.is(semver.gt('2.0.0', '1.0.0'), true);
 });
 
@@ -55,7 +54,20 @@ test('2.0.0 gt 3.0.0 return false', async t => {
     t.is(semver.gt('2.0.0', '3.0.0'), false);
 });
 
+// gte
+test('2.0.0 gte 1.0.0 return true', async t => {
+    t.is(semver.gte('2.0.0', '1.0.0'), true);
+});
 
+test('2.0.0 gte 2.0.0 return true', async t => {
+    t.is(semver.gte('2.0.0', '2.0.0'), true);
+});
+
+test('2.0.0 gte 3.0.0 return false', async t => {
+    t.is(semver.gte('2.0.0', '3.0.0'), false);
+});
+
+// lt
 test('1.0.0 lt 2.0.0 return true', async t => {
     t.is(semver.lt('1.0.0', '2.0.0'), true);
 });
@@ -64,8 +76,21 @@ test('2.0.0 lt 2.0.0 return false', async t => {
     t.is(semver.lt('2.0.0', '2.0.0'), false);
 });
 
-test('3.0.0 lt 2.0.0 return true', async t => {
+test('3.0.0 lt 2.0.0 return false', async t => {
     t.is(semver.lt('3.0.0', '2.0.0'), false);
+});
+
+// lte
+test('1.0.0 lte 2.0.0 return true', async t => {
+    t.is(semver.lte('1.0.0', '2.0.0'), true);
+});
+
+test('2.0.0 lte 2.0.0 return true', async t => {
+    t.is(semver.lte('2.0.0', '2.0.0'), true);
+});
+
+test('3.0.0 lt 2.0.0 return false', async t => {
+    t.is(semver.lte('3.0.0', '2.0.0'), false);
 });
 
 test('version 1.10.12-beta+20130222 main version to numeric is 100100012', async t => {
