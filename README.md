@@ -8,7 +8,7 @@ Based on the [node-semver](https://github.com/npm/node-semver) project
 
 1. only support semantic version compare;
 2. support browsers;
-3. don't include semantic version range compare, if you need please use `node-semver`.
+3. don't support semantic version range compare, if you need please use `node-semver`.
 
 ## Installation
 
