@@ -25,6 +25,10 @@ As a node module:
 ```
 const semver = require('semver-lite')
 
+semver.validate('2.0.1-beta+20171213'); //true
+semver.validate('v2.0.1-beta+20171213'); //true
+semver.validate('2.0.1.1'); //false
+
 semver.compare('2.0.1', '1.0.10'); // 1
 semver.compare('2.0.1', '2.0.1'); // 0
 semver.compare('2.0.1', '3.0.10'); // -1

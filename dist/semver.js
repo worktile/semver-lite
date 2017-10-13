@@ -83,8 +83,11 @@ return /******/ (function(modules) { // webpackBootstrap
 var SemverVersion = __webpack_require__(1);
 
 var semver = {
-    version: '0.0.2',
+    version: '0.0.3',
     SemverVersion: SemverVersion,
+    validate: function validate(version) {
+        return SemverVersion.validate(version);
+    },
     compare: function compare(a, b, needCompareBuildVersion) {
         return new SemverVersion(a).compare(new SemverVersion(b), needCompareBuildVersion);
     },
@@ -223,11 +226,6 @@ var SemverVersion = function () {
             return Array(fill > length ? fill - length + 1 || 0 : 0).join(0) + num;
         }
     }, {
-        key: 'validate',
-        value: function validate(version) {
-            return false;
-        }
-    }, {
         key: 'mainVersionToNumeric',
         value: function mainVersionToNumeric(digit) {
             var numericStr = [this._padNumber(this.major, digit), this._padNumber(this.minor, digit), this._padNumber(this.patch, digit)].join('');
@@ -317,6 +315,11 @@ var SemverVersion = function () {
             } else {
                 return this.compareIdentifiers(this.build, otherSemver.build);
             }
+        }
+    }], [{
+        key: 'validate',
+        value: function validate(version) {
+            return REGEX_FULL_VERSION.test(version);
         }
     }]);
 

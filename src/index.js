@@ -1,8 +1,11 @@
 const SemverVersion = require('./semver');
 
 const semver = {
-    version: '0.0.2',
+    version: '0.0.3',
     SemverVersion: SemverVersion,
+    validate(version) {
+        return SemverVersion.validate(version);
+    },
     compare(a, b, needCompareBuildVersion) {
         return new SemverVersion(a).compare(new SemverVersion(b), needCompareBuildVersion);
     },

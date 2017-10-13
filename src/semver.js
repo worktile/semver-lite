@@ -95,8 +95,8 @@ class SemverVersion {
         ).join(0) + num);
     }
 
-    validate(version) {
-        return false;
+    static validate(version) {
+        return REGEX_FULL_VERSION.test(version);
     }
 
     mainVersionToNumeric(digit) {
