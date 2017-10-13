@@ -44,7 +44,7 @@ semver.instance('v1.2.0-2+20171013').version; // '1.2.0-2+20171013'
 semver.instance('v1.2.0-2+20171013').prerelease; // 2
 ```
 
-As a browsers:
+As a browser:
 
 `<script src='./dist/semver.js'></script>`
 
