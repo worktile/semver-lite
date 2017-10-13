@@ -83,10 +83,19 @@ return /******/ (function(modules) { // webpackBootstrap
 var SemverVersion = __webpack_require__(1);
 
 var semver = {
-    version: '1.0.0',
+    version: '0.0.2',
     SemverVersion: SemverVersion,
     compare: function compare(a, b, needCompareBuildVersion) {
         return new SemverVersion(a).compare(new SemverVersion(b), needCompareBuildVersion);
+    },
+    format: function format(version) {
+        return new SemverVersion(version).format();
+    },
+    instance: function instance(version) {
+        return new SemverVersion(version);
+    },
+    compareMainVersion: function compareMainVersion(a, b) {
+        return new SemverVersion(a).compareMainVersion(new SemverVersion(b));
     },
     gt: function gt(a, b, needCompareBuildVersion) {
         var result = this.compare(a, b, needCompareBuildVersion);
@@ -165,7 +174,6 @@ var SemverVersion = function () {
         var matches = version.trim().match(REGEX_FULL_VERSION);
 
         this.rawVersion = version;
-
         this.major = +matches[1];
         this.minor = +matches[2];
         this.patch = +matches[3];
@@ -175,7 +183,7 @@ var SemverVersion = function () {
         this._isThrowVersionNumericError(this.patch, 'patch');
 
         if (matches[4]) {
-            this.prerelease = matches[4].split('.').map(function (id) {
+            this.prereleaseArray = matches[4].split('.').map(function (id) {
                 if (/^[0-9]+$/.test(id)) {
                     var num = +id;
                     if (num >= 0 && num < MAX_SAFE_INTEGER) {
@@ -185,11 +193,15 @@ var SemverVersion = function () {
                 return id;
             });
         } else {
-            this.prerelease = [];
+            this.prereleaseArray = [];
         }
 
-        this.buildVersion = matches[5];
-        this.build = matches[5] ? matches[5].split('.') : [];
+        //this.build = matches[5] ? matches[5].split('.') : [];
+
+        this.prerelease = matches[4];
+        this.build = matches[5];
+        this.mainVersion = [this.major, this.minor, this.patch].join('.');
+        this.version = this.mainVersion + (this.prerelease ? '-' + this.prerelease : '') + (this.build ? '+' + this.build : '');
     }
 
     _createClass(SemverVersion, [{
@@ -271,17 +283,17 @@ var SemverVersion = function () {
     }, {
         key: 'comparePreReleaseVersion',
         value: function comparePreReleaseVersion(otherSemver) {
-            if (this.prerelease.length && !otherSemver.prerelease.length) {
+            if (this.prereleaseArray.length && !otherSemver.prereleaseArray.length) {
                 return -1;
-            } else if (!this.prerelease.length && otherSemver.prerelease.length) {
+            } else if (!this.prereleaseArray.length && otherSemver.prereleaseArray.length) {
                 return 1;
-            } else if (!this.prerelease.length && !otherSemver.prerelease.length) {
+            } else if (!this.prereleaseArray.length && !otherSemver.prereleaseArray.length) {
                 return 0;
             }
             var i = 0;
             do {
-                var a = this.prerelease[i];
-                var b = otherSemver.prerelease[i];
+                var a = this.prereleaseArray[i];
+                var b = otherSemver.prereleaseArray[i];
                 if (a === undefined && b === undefined) {
                     return 0;
                 } else if (b === undefined) {
@@ -298,12 +310,12 @@ var SemverVersion = function () {
     }, {
         key: 'compareBuildVersion',
         value: function compareBuildVersion(otherSemver) {
-            if (this.buildVersion && !otherSemver.buildVersion) {
+            if (this.build && !otherSemver.build) {
                 return 1;
-            } else if (!this.buildVersion && otherSemver.buildVersion) {
+            } else if (!this.build && otherSemver.build) {
                 return -1;
             } else {
-                return this.compareIdentifiers(this.buildVersion, otherSemver.buildVersion);
+                return this.compareIdentifiers(this.build, otherSemver.build);
             }
         }
     }]);
