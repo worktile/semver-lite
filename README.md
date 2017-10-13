@@ -76,8 +76,10 @@ semverLite.lt('2.0.1', '3.0.10') // true
 compare,gt,gte,lt,lte has thirdly third optional parameter `needCompareBuildVersion` what mark wheather compare build version, default is `false`.
 
 ```
-semver.compare('2.0.0+20171013', '2.0.0+20171014'); // 0  default false don't compare build version `20171014`
-semver.compare('2.0.0+20171013', '2.0.0+20171014', true); // -1 compare build version `20171014`
+// default false don't compare build version `20171014`
+semver.compare('2.0.0+20171013', '2.0.0+20171014'); // 0
+// compare build version `20171014`
+semver.compare('2.0.0+20171013', '2.0.0+20171014', true); // -1
 ```
 
 ## Links
