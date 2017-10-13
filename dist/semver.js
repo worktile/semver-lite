@@ -104,9 +104,17 @@ var semver = {
         var result = this.compare(a, b, needCompareBuildVersion);
         return result === 1;
     },
+    gte: function gte(a, b, needCompareBuildVersion) {
+        var result = this.compare(a, b, needCompareBuildVersion);
+        return result === 1 || result === 0;
+    },
     lt: function lt(a, b, needCompareBuildVersion) {
         var result = this.compare(a, b, needCompareBuildVersion);
         return result === -1;
+    },
+    lte: function lte(a, b, needCompareBuildVersion) {
+        var result = this.compare(a, b, needCompareBuildVersion);
+        return result === -1 || result === 0;
     },
 
     // 主版本转成数字类型方便比较
