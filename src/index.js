@@ -6,6 +6,15 @@ const semver = {
     compare(a, b, needCompareBuildVersion) {
         return new SemverVersion(a).compare(new SemverVersion(b), needCompareBuildVersion);
     },
+    format(version) {
+        return new SemverVersion(version).format();
+    },
+    instance(version) {
+        return new SemverVersion(version);
+    },
+    compareMainVersion(a, b) {
+        return new SemverVersion(a).compareMainVersion(new SemverVersion(b));
+    },
     gt(a, b, needCompareBuildVersion) {
         const result = this.compare(a, b, needCompareBuildVersion);
         return result === 1;

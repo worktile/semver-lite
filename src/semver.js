@@ -42,7 +42,6 @@ class SemverVersion {
         const matches = version.trim().match(REGEX_FULL_VERSION);
 
         this.rawVersion = version;
-
         this.major = +matches[1];
         this.minor = +matches[2];
         this.patch = +matches[3];
@@ -52,7 +51,7 @@ class SemverVersion {
         this._isThrowVersionNumericError(this.patch, 'patch');
 
         if (matches[4]) {
-            this.prerelease = matches[4].split('.').map(function (id) {
+            this.prereleaseArray = matches[4].split('.').map(function (id) {
                 if (/^[0-9]+$/.test(id)) {
                     var num = +id;
                     if (num >= 0 && num < MAX_SAFE_INTEGER) {
@@ -62,12 +61,21 @@ class SemverVersion {
                 return id;
             });
         } else {
-            this.prerelease = [];
+            this.prereleaseArray = [];
         }
 
-        this.buildVersion = matches[5];
-        this.build = matches[5] ? matches[5].split('.') : [];
+        //this.build = matches[5] ? matches[5].split('.') : [];
 
+        this.prerelease = matches[4];
+        this.build = matches[5];
+        this.mainVersion = [
+            this.major,
+            this.minor,
+            this.patch
+        ].join('.');
+        this.version = this.mainVersion
+            + (this.prerelease ? `-${this.prerelease}` : '')
+            + (this.build ? `+${this.build}` : '');
     }
 
     _isThrowVersionNumericError(versionNumber, versionName) {
@@ -143,17 +151,17 @@ class SemverVersion {
     }
 
     comparePreReleaseVersion(otherSemver) {
-        if (this.prerelease.length && !otherSemver.prerelease.length) {
+        if (this.prereleaseArray.length && !otherSemver.prereleaseArray.length) {
             return -1;
-        } else if (!this.prerelease.length && otherSemver.prerelease.length) {
+        } else if (!this.prereleaseArray.length && otherSemver.prereleaseArray.length) {
             return 1;
-        } else if (!this.prerelease.length && !otherSemver.prerelease.length) {
+        } else if (!this.prereleaseArray.length && !otherSemver.prereleaseArray.length) {
             return 0;
         }
         let i = 0;
         do {
-            const a = this.prerelease[i];
-            const b = otherSemver.prerelease[i];
+            const a = this.prereleaseArray[i];
+            const b = otherSemver.prereleaseArray[i];
             if (a === undefined && b === undefined) {
                 return 0;
             } else if (b === undefined) {
@@ -170,12 +178,12 @@ class SemverVersion {
     }
 
     compareBuildVersion(otherSemver) {
-        if (this.buildVersion && !otherSemver.buildVersion) {
+        if (this.build && !otherSemver.build) {
             return 1;
-        } else if (!this.buildVersion && otherSemver.buildVersion) {
+        } else if (!this.build && otherSemver.build) {
             return -1;
         } else {
-            return this.compareIdentifiers(this.buildVersion, otherSemver.buildVersion);
+            return this.compareIdentifiers(this.build, otherSemver.build);
         }
     }
 }
