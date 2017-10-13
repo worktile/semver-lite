@@ -1,0 +1,20 @@
+{
+    "author": {
+      "name": "https://github.com/worktile/semver-lite"
+    },
+    "name": "semver-lite",
+    "version": "0.0.2",
+    "keywords": [
+      "semver",
+      "semver-lite",
+      "compare"
+    ],
+    "ignore": [
+      "test",
+      "src",
+      "webpack.config.js",
+      ".nycrc",
+      "package.json"
+    ],
+    "main": ["dist/semver.js"]
+  }
