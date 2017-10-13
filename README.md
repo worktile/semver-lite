@@ -27,10 +27,20 @@ const semver = require('semver-lite')
 semver.compare('2.0.1', '1.0.10'); // 1
 semver.compare('2.0.1', '2.0.1'); // 0
 semver.compare('2.0.1', '3.0.10'); // -1
-semver.gt('2.0.1', '1.0.10') // true
-semver.gt('2.0.1', '3.0.10') // false
-semver.lt('2.0.1', '1.0.10') // false
-semver.lt('2.0.1', '3.0.10') // true
+semver.compare('2.0.0-beta', '2.0.0'); // -1
+semver.compare('2.0.0-beta', '2.0.0-1'); // 1
+semver.compare('2.0.0-beta', '2.0.0-rc'); // -1
+semver.compare('2.0.0-beta+20171013', '2.0.0-beta+20171014'); // 0
+semver.compare('2.0.0-beta+20171013', '2.0.0-beta+20171014', true); // -1
+
+semver.gt('2.0.1', '1.0.10'); // true
+semver.gt('2.0.1', '3.0.10'); // false
+semver.lt('2.0.1', '1.0.10'); // false
+semver.lt('2.0.1', '3.0.10'); // true
+
+semver.instance('v1.2.0-2+20171013').mainVersion; // '1.2.0'
+semver.instance('v1.2.0-2+20171013').version; // '1.2.0-2+20171013'
+semver.instance('v1.2.0-2+20171013').prerelease; // 2
 ```
 
 As a browsers:

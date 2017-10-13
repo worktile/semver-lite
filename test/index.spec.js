@@ -84,18 +84,18 @@ test('compare main version 1.2.0-2+123 and 1.0.10-beta return 1', async t => {
     t.is(semver.compareMainVersion('1.2.0-2+123', '1.0.10-beta'), 1);
 });
 
-test('get version 1.2.0-2+123 is 1.2.0-2+123', async t => {
-    t.is(semver.instance('1.2.0-2+123').version, '1.2.0-2+123');
+test('get version 1.2.0-2+20171013 is 1.2.0-2+20171013', async t => {
+    t.is(semver.instance('1.2.0-2+20171013').version, '1.2.0-2+20171013');
 });
 
-test('get version v1.2.0-2+123 versuib', async t => {
-    t.is(semver.instance('v1.2.0-2+123').version, '1.2.0-2+123');
+test('get version v1.2.0-2+20171013 is 1.2.0-2+20171013', async t => {
+    t.is(semver.instance('v1.2.0-2+20171013').version, '1.2.0-2+20171013');
 });
 
-test('get main version 1.2.0-2+123 is 1.2.0-2+123', async t => {
-    t.is(semver.instance('1.2.0-2+123').mainVersion, '1.2.0');
+test('get main version 1.2.0-2+20171013 is 1.2.0-2', async t => {
+    t.is(semver.instance('1.2.0-2+20171013').mainVersion, '1.2.0');
 });
 
-test('get version v1.2.0-2+123 versuib', async t => {
-    t.is(semver.instance('v1.2.0-2+123').mainVersion, '1.2.0');
+test('get main version v1.2.0-2+20171013 is 1.2.0', async t => {
+    t.is(semver.instance('v1.2.0-2+20171013').mainVersion, '1.2.0');
 });
