@@ -52,7 +52,7 @@ class SemverVersion {
 
         if (matches[4]) {
             this.prereleaseArray = matches[4].split('.').map(function (id) {
-                if (/^[0-9]+$/.test(id)) {
+                if (REGEX_NUMERIC.test(id)) {
                     var num = +id;
                     if (num >= 0 && num < MAX_SAFE_INTEGER) {
                         return num;
