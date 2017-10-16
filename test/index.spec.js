@@ -95,15 +95,15 @@ test('3.0.0 lt 2.0.0 return false', async t => {
 
 // mainVersionToNumeric
 test('version 1.10.12-beta+20130222 main version to numeric is 100100012', async t => {
-    t.is(semver.mainVersionToNumeric('1.10.12'), 100100012);
+    t.is(semver.mainVersionToNumeric('1.10.12', 4), 100100012);
 });
 
 test('version 1.10.12-beta+20130222 main version to numeric is 100100012', async t => {
-    t.is(semver.mainVersionToNumeric('1.10.12', 6), 1000010000012);
+    t.is(semver.mainVersionToNumeric('1.10.12'), 1000010000012);
 });
 
 test('version 1.10111.12 main version to numeric is 1101110012', async t => {
-    t.is(semver.mainVersionToNumeric('1.10111.12'), 1101110012);
+    t.is(semver.mainVersionToNumeric('1.10111.12', 4), 1101110012);
 });
 
 test('compare main version 1.0.0-rc and 1.0.0-beta return 0', async t => {

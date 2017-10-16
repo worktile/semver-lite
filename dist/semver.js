@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 var SemverVersion = __webpack_require__(1);
 
 var semver = {
-    version: '0.0.3',
+    version: '0.0.4',
     SemverVersion: SemverVersion,
     validate: function validate(version) {
         return SemverVersion.validate(version);
@@ -119,7 +119,7 @@ var semver = {
 
     // 主版本转成数字类型方便比较
     mainVersionToNumeric: function mainVersionToNumeric(version) {
-        var digit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4;
+        var digit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
 
         var semverVersion = new SemverVersion(version);
         return semverVersion.mainVersionToNumeric(digit);
@@ -195,7 +195,7 @@ var SemverVersion = function () {
 
         if (matches[4]) {
             this.prereleaseArray = matches[4].split('.').map(function (id) {
-                if (/^[0-9]+$/.test(id)) {
+                if (REGEX_NUMERIC.test(id)) {
                     var num = +id;
                     if (num >= 0 && num < MAX_SAFE_INTEGER) {
                         return num;

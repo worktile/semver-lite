@@ -1,7 +1,7 @@
 const SemverVersion = require('./semver');
 
 const semver = {
-    version: '0.0.3',
+    version: '0.0.4',
     SemverVersion: SemverVersion,
     validate(version) {
         return SemverVersion.validate(version);
@@ -35,7 +35,7 @@ const semver = {
         return result === -1 || result === 0;
     },
     // 主版本转成数字类型方便比较
-    mainVersionToNumeric(version, digit = 4) {
+    mainVersionToNumeric(version, digit = 6) {
         const semverVersion = new SemverVersion(version);
         return semverVersion.mainVersionToNumeric(digit);
     }
