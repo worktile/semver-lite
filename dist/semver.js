@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 var SemverVersion = __webpack_require__(1);
 
 var semver = {
-    version: '0.0.4',
+    version: '0.0.5',
     SemverVersion: SemverVersion,
     validate: function validate(version) {
         return SemverVersion.validate(version);
@@ -115,6 +115,13 @@ var semver = {
     lte: function lte(a, b, needCompareBuildVersion) {
         var result = this.compare(a, b, needCompareBuildVersion);
         return result === -1 || result === 0;
+    },
+    equal: function equal(a, b, needCompareBuildVersion) {
+        var result = this.compare(a, b, needCompareBuildVersion);
+        return result === 0;
+    },
+    equalMain: function equalMain(a, b) {
+        return new SemverVersion(a).mainVersion === new SemverVersion(b).mainVersion;
     },
 
     // 主版本转成数字类型方便比较

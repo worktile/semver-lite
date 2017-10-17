@@ -49,6 +49,9 @@ semver.lt('2.0.1', '1.0.10'); // false
 semver.lt('2.0.1', '3.0.10'); // true
 semver.lte('2.0.1', '1.0.10'); // false
 semver.lte('2.0.1', '2.0.1'); // true
+semver.equal('2.0.1', '2.0.1'); // true
+semver.equal('2.0.1', '2.0.2'); // false
+semver.equalMain('2.0.0', '2.0.0-beta'); // true
 
 semver.mainVersionToNumeric('1.10.12, 4); // 100100012 , 1 0010 0012
 semver.mainVersionToNumeric('1.10.12', 6); // 1000010000012 , 1 000010 000012

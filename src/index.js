@@ -1,7 +1,7 @@
 const SemverVersion = require('./semver');
 
 const semver = {
-    version: '0.0.4',
+    version: '0.0.5',
     SemverVersion: SemverVersion,
     validate(version) {
         return SemverVersion.validate(version);
@@ -33,6 +33,13 @@ const semver = {
     lte(a, b, needCompareBuildVersion) {
         const result = this.compare(a, b, needCompareBuildVersion);
         return result === -1 || result === 0;
+    },
+    equal(a, b, needCompareBuildVersion) {
+        const result = this.compare(a, b, needCompareBuildVersion);
+        return result === 0;
+    },
+    equalMain(a, b) {
+        return (new SemverVersion(a)).mainVersion === (new SemverVersion(b)).mainVersion;
     },
     // 主版本转成数字类型方便比较
     mainVersionToNumeric(version, digit = 6) {
