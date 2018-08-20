@@ -147,7 +147,7 @@ class SemverVersion {
     compareMainVersion(otherSemver) {
         return this.compareNumeric(this.major, otherSemver.major)
             || this.compareNumeric(this.minor, otherSemver.minor)
-            || this.compareNumeric(this.minor, otherSemver.patch);
+            || this.compareNumeric(this.patch, otherSemver.patch);
     }
 
     comparePreReleaseVersion(otherSemver) {

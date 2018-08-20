@@ -291,7 +291,7 @@ var SemverVersion = function () {
     }, {
         key: 'compareMainVersion',
         value: function compareMainVersion(otherSemver) {
-            return this.compareNumeric(this.major, otherSemver.major) || this.compareNumeric(this.minor, otherSemver.minor) || this.compareNumeric(this.minor, otherSemver.patch);
+            return this.compareNumeric(this.major, otherSemver.major) || this.compareNumeric(this.minor, otherSemver.minor) || this.compareNumeric(this.patch, otherSemver.patch);
         }
     }, {
         key: 'comparePreReleaseVersion',

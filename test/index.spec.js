@@ -5,6 +5,10 @@ test('compare 2.0.0 > 1.0.0 return 1', async t => {
     t.is(semver.compare('2.0.0', '1.0.0'), 1);
 });
 
+test('compare 2.0.1 > 2.0.0 return 1', async t => {
+    t.is(semver.compare('2.0.1', '2.0.0'), 1);
+});
+
 test('compare 1.0.0 < 2.0.0 return -1', async t => {
     t.is(semver.compare('1.0.0', '2.0.0'), -1);
 });
